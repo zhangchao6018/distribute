@@ -17,7 +17,7 @@
                         http://www.springframework.org/schema/context/spring-context.xsd
                         http://www.springframework.org/schema/tx
                         http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
-    <!--配置数据源-->
+    <!--配置所有的数据源 根据id区分-->
     <bean id="ds0" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
         <property name="username" value="root" />
@@ -30,6 +30,14 @@
         <property name="password" value="root" />
         <property name="jdbcUrl" value="jdbc:mysql://192.168.1.112/sharding_order?serverTimezone=Asia/Shanghai&amp;useSSL=false"/>
     </bean>
+    <!--配置分片规则
+        data-source-names 根据实际配置的数据源id 配置
+        table-rule 配置表的分片规则
+            table-rule:逻辑表的名称,需要和mybatis的sql语句表名一致
+            $-> :占位表达式,区分于${}->这个是读application.properties的
+       配置数据库/表的分配策略表达式 见:databaseStrategy/tableStrategy
+
+    -->
     <sharding:data-source id="sharding-data-source">
         <sharding:sharding-rule data-source-names="ds0,ds1">
             <sharding:table-rules>
@@ -37,11 +45,7 @@
                          database-strategy-ref="databaseStrategy" table-strategy-ref="tableStrategy"
                 />
             </sharding:table-rules>
-            <sharding:binding-table-rules>
-            <sharding:binding-table-rule logic-tables="t_order,t_order_item" />
-            </sharding:binding-table-rules>
         </sharding:sharding-rule>
-
     </sharding:data-source>
 
     <!--user_id 对2取模 为0数->据源就是ds0   如果取模结果是1,数据源就是ds1-> -->

@@ -59,19 +59,6 @@
             <version>4.0.0-RC2</version>
         </dependency>
 
-        <!--Unable to locate Spring NamespaceHandler for XML schema namespace [http://shardingsphere.apache.org/schema/shardingsphere/sharding]-->
-<!--        <dependency>-->
-<!--            <groupId>io.shardingsphere</groupId>-->
-<!--            <artifactId>sharding-core</artifactId>-->
-<!--            <version>3.1.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.shardingsphere</groupId>-->
-<!--            <artifactId>sharding-jdbc-spring-namespace</artifactId>-->
-<!--            <version>3.1.0</version>-->
-<!--        </dependency>-->
-        <!--Unable to locate Spring NamespaceHandler for XML schema namespace [http://shardingsphere.apache.org/schema/shardingsphere/sharding]-->
-
 
     </dependencies>
 

@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -29,39 +28,54 @@ public class ShardingJdbcDemoApplicationTests {
     }
 
     @Test
-    @Transactional
+//    @Transactional
     public void testOrder() {
-        Order order = new Order();
-        order.setOrderId(1l);
-        order.setUserId(15);
-        order.setOrderAmount(BigDecimal.TEN);
-        order.setOrderStatus(1);
-        orderMapper.insertSelective(order);
+        //测试1
+//        Order order = new Order();
+//        order.setId(1l);
+//        order.setOrderId(1l);
+//        order.setUserId(15);
+//        order.setOrderAmount(BigDecimal.TEN);
+//        order.setOrderStatus(1);
+//        orderMapper.insertSelective(order);
 
+//        Order order = orderMapper.selectByPrimaryKey(15);
+//        System.out.println(order);
+
+//      测试2
         Order order2 = new Order();
-        order2.setOrderId(2l);
-        order2.setUserId(16);
+        order2.setOrderId(2L);
+        order2.setId(16L);
+        order2.setUserId(26);
         order2.setOrderAmount(BigDecimal.TEN);
         order2.setOrderStatus(1);
         orderMapper.insertSelective(order2);
 
-        throw new RuntimeException("test XA");
+       // throw new RuntimeException("test XA");
     }
 
     @Test
     public void testSelectOrder(){
+//        OrderExample orderExample = new OrderExample();
+//        orderExample.createCriteria().andOrderIdEqualTo(4l)
+//                .andUserIdEqualTo(20);
+//        List<Order> orders = orderMapper.selectByExample(orderExample);
+//        orders.forEach(o-> System.out.println(o.getOrderId()+"----"+o.getUserId()));
         OrderExample orderExample = new OrderExample();
-        orderExample.createCriteria().andOrderIdEqualTo(4l)
-                .andUserIdEqualTo(20);
+        orderExample.createCriteria()
+                .andUserIdEqualTo(16);
         List<Order> orders = orderMapper.selectByExample(orderExample);
         orders.forEach(o-> System.out.println(o.getOrderId()+"----"+o.getUserId()));
     }
 
+    /**
+     * 全局表
+     */
     @Test
     public void testGlobal(){
         Area area = new Area();
-        area.setId(2);
-        area.setName("上海");
+        area.setId(4);
+        area.setName("深圳");
         areaMapper.insert(area);
     }
 
@@ -74,6 +88,9 @@ public class ShardingJdbcDemoApplicationTests {
 
     }
 
+    /**
+     * 从表测试:发现sharding有个bug
+     */
     @Test
     public void testOrderItem(){
         OrderItem orderItem = new OrderItem();
