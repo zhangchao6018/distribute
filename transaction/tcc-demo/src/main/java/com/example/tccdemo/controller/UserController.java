@@ -2,7 +2,6 @@ package com.example.tccdemo.controller;
 
 import com.example.tccdemo.db131.model.User;
 import com.example.tccdemo.service.UserService;
-import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,24 +45,24 @@ public class UserController {
         return "user/user-detail";
     }
 
-    @RequestMapping("updateUser")
-    public String updateUser(User user,String token) throws Exception {
-
-        Thread.sleep(5000);
-
-        if (user.getId() !=null){
-            System.out.println("更新用户");
-            userService.updateUser(user);
-        }else {
-            if (tokenSet.contains(token)){
-                System.out.println("添加用户");
-                userService.insertUser(user,token);
-            }else {
-                throw new Exception("token 不存在");
-            }
-        }
-        return "redirect:/user/userList";
-    }
+//    @RequestMapping("updateUser")
+//    public String updateUser(User user,String token) throws Exception {
+//
+//        Thread.sleep(5000);
+//
+//        if (user.getId() !=null){
+//            System.out.println("更新用户");
+//            userService.updateUser(user);
+//        }else {
+//            if (tokenSet.contains(token)){
+//                System.out.println("添加用户");
+//                userService.insertUser(user,token);
+//            }else {
+//                throw new Exception("token 不存在");
+//            }
+//        }
+//        return "redirect:/user/userList";
+//    }
 
     @RequestMapping("register")
     public String register(ModelMap map){

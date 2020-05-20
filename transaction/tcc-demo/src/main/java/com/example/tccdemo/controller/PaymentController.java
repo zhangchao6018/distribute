@@ -23,8 +23,8 @@ public class PaymentController {
     @RequestMapping("payment")
     public String payment(int userId, int orderId, BigDecimal amount) throws Exception {
 
-        int result = paymentServcie.pamentMQ(userId, orderId, amount);
-
+//        int result = paymentServcie.pamentMQ(userId, orderId, amount);
+        int result = paymentServcie.pament(userId, orderId, amount);
         return "支付结果："+result;
     }
 }
