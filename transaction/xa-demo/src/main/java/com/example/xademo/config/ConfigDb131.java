@@ -14,7 +14,6 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
 import javax.sql.DataSource;
-import javax.sql.XADataSource;
 import javax.transaction.UserTransaction;
 import java.io.IOException;
 
@@ -25,9 +24,9 @@ public class ConfigDb131 {
     @Bean("db131")
     public DataSource db131(){
         MysqlXADataSource xaDataSource = new MysqlXADataSource();
-        xaDataSource.setUser("imooc");
-        xaDataSource.setPassword("Imooc@123456");
-        xaDataSource.setUrl("jdbc:mysql://192.168.73.131:3306/xa_131");
+        xaDataSource.setUser("root");
+        xaDataSource.setPassword("root");
+        xaDataSource.setUrl("jdbc:mysql://192.168.1.111:3306/xa_111");
 
         AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
         atomikosDataSourceBean.setXaDataSource(xaDataSource);
@@ -45,6 +44,7 @@ public class ConfigDb131 {
         return sqlSessionFactoryBean;
     }
 
+    /*事务管理器--只需配置一个*/
     @Bean("xaTransaction")
     public JtaTransactionManager jtaTransactionManager(){
         UserTransaction userTransaction = new UserTransactionImp();

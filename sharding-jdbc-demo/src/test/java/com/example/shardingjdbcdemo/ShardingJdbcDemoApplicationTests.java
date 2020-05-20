@@ -44,11 +44,11 @@ public class ShardingJdbcDemoApplicationTests {
 
 //      测试2
         Order order2 = new Order();
-        order2.setOrderId(2L);
+        order2.setOrderId(10L);
         order2.setId(16L);
-        order2.setUserId(26);
+        order2.setUserId(22);
         order2.setOrderAmount(BigDecimal.TEN);
-        order2.setOrderStatus(1);
+        order2.setOrderStatus(2);
         orderMapper.insertSelective(order2);
 
        // throw new RuntimeException("test XA");
@@ -102,11 +102,14 @@ public class ShardingJdbcDemoApplicationTests {
         orderItemMapper.insert(orderItem);
     }
 
+    /**
+     * 读写分离
+     */
     @Test
     public void testMsOrder() {
         OrderExample orderExample = new OrderExample();
-        orderExample.createCriteria().andUserIdEqualTo(20)
-                .andOrderIdEqualTo(4l);
+        orderExample.createCriteria().andUserIdEqualTo(22)
+                .andOrderIdEqualTo(10L);
         for (int i =0 ;i<10;i++){
             List<Order> orders = orderMapper.selectByExample(orderExample);
             orders.forEach(o->{
