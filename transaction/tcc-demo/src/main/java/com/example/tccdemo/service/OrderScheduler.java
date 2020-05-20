@@ -8,7 +8,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +28,7 @@ public class OrderScheduler {
 
     @Scheduled(cron = "0/10 * * * * ?")
     public void orderNotify() throws IOException {
-
+        //取出所有未发送消息
         PaymentMsgExample paymentMsgExample = new PaymentMsgExample();
         paymentMsgExample.createCriteria().andStatusEqualTo(0);//未发送
         List<PaymentMsg> paymentMsgs = paymentMsgMapper.selectByExample(paymentMsgExample);

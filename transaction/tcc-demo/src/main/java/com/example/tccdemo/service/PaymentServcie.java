@@ -4,13 +4,10 @@ import com.example.tccdemo.db131.dao.AccountAMapper;
 import com.example.tccdemo.db131.dao.PaymentMsgMapper;
 import com.example.tccdemo.db131.model.AccountA;
 import com.example.tccdemo.db131.model.PaymentMsg;
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,13 +27,13 @@ public class PaymentServcie {
 
 
     /**
-     * 支付接口
+     * 支付接口  这里消息表和余额在同一个数据库——>本地事务控制
      * @param userId
      * @param orderId
      * @param amount
      * @return 0:成功；1:用户不存在;2:余额不足
      */
-    @Transactional(transactionManager = "tm131")
+    @Transactional(transactionManager = "tm131")   //@see com.example.tccdemo.config.ConfigDb131.transactionManager
     public int pament(int userId, int orderId, BigDecimal amount){
         //支付操作
         AccountA accountA = accountAMapper.selectByPrimaryKey(userId);

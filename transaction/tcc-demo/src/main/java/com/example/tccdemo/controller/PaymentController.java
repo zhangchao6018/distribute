@@ -12,6 +12,14 @@ public class PaymentController {
     @Autowired
     private PaymentServcie paymentServcie;
 
+    /**
+     * 支付接口->模拟单是业务上层,如生成订单(未支付),减扣余额
+     * @param userId
+     * @param orderId
+     * @param amount
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("payment")
     public String payment(int userId, int orderId, BigDecimal amount) throws Exception {
 

@@ -12,7 +12,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
-import javax.transaction.TransactionManager;
 import java.io.IOException;
 
 @Configuration
@@ -22,9 +21,9 @@ public class ConfigDb131 {
     @Bean("db131")
     public DataSource db131() {
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("imooc");
-        dataSource.setPassword("Imooc@123456");
-        dataSource.setUrl("jdbc:mysql://192.168.73.131:3306/xa_131");
+        dataSource.setUser("root");
+        dataSource.setPassword("root");
+        dataSource.setUrl("jdbc:mysql://192.168.1.111:3306/xa_111");
 
         return dataSource;
     }
