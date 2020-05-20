@@ -13,7 +13,8 @@ public class PaymentController {
     private PaymentServcie paymentServcie;
 
     /**
-     * 支付接口->模拟单是业务上层,如生成订单(未支付),减扣余额
+     * 支付接口->这里应是业务上游,如生成订单(未支付),减扣余额
+     * 本地消息表+定时任务+http请求
      * @param userId
      * @param orderId
      * @param amount
@@ -25,6 +26,23 @@ public class PaymentController {
 
 //        int result = paymentServcie.pamentMQ(userId, orderId, amount);
         int result = paymentServcie.pament(userId, orderId, amount);
+        return "支付结果："+result;
+    }
+
+
+    /**
+     * 支付接口->这里应是业务上游,如生成订单(未支付),减扣余额
+     * 本地消息表+定时任务+MQ
+     * @param userId
+     * @param orderId
+     * @param amount
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("paymentMq")
+    public String paymentMq(int userId, int orderId, BigDecimal amount) throws Exception {
+//        int result = paymentServcie.pament(userId, orderId, amount);
+        int result = paymentServcie.pamentMQ(userId, orderId, amount);
         return "支付结果："+result;
     }
 }
