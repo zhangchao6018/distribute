@@ -19,7 +19,7 @@ public class Controller {
         return "success";
     }
 
-    // 提醒！ 注意配置扫包路径（com.imooc.springcloud路径不同）
+    // 提醒！ 注意配置扫包路径（com.demo.springcloud路径不同）
     @GetMapping("test-annotation")
     @com.demo.springcloud.annotation.AccessLimiter(limit = 1)
     public String testAnnotation() {
