@@ -4,7 +4,7 @@
     3.单元测试:
     com.example.tccdemo.TccDemoApplicationTests.testAccount
 
-一.基于本地消息表的最终一致性方案
+**二.基于本地消息表的最终一致性方案**
 -- 1.本地消息表+定时任务=httpclient
     支付:
     localhost:8080/payment?userId=1&orderId=10010&amount=100
@@ -32,3 +32,11 @@
       localhost:8080/paymentMq?userId=1&orderId=10010&amount=100
       消息代码:com.example.tccdemo.service.PaymentServcie.pamentMQ
      
+**三.接口幂等性**
+1.update操作:利用乐观锁(version) 初始化页面将数据版本号给客户端,更新时必须携带这个version
+2.insert操作没有唯一性标识,可以采用token机制+锁,防止重复提交
+
+    zk:
+    zookeeper-server-start  /usr/local/etc/kafka/zookeeper.properties 
+    http://localhost:8080/user/register
+

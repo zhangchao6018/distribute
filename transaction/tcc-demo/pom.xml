@@ -62,16 +62,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.curator</groupId>-->
-<!--            <artifactId>curator-recipes</artifactId>-->
-<!--            <version>4.2.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.zookeeper</groupId>-->
-<!--            <artifactId>zookeeper</artifactId>-->
-<!--            <version>3.4.14</version>-->
-<!--        </dependency>-->
+        <!--zk start...-->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.14</version>
+        </dependency>
+        <!--zk end...-->
     </dependencies>
 
     <build>

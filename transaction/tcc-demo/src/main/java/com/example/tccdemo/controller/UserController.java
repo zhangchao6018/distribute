@@ -15,6 +15,7 @@ import java.util.*;
 @RequestMapping("user")
 public class UserController {
 
+    //集群部署,此处需要改成redis
     private Set<String> tokenSet = new HashSet<>();
 
     @Autowired
@@ -45,24 +46,24 @@ public class UserController {
         return "user/user-detail";
     }
 
-//    @RequestMapping("updateUser")
-//    public String updateUser(User user,String token) throws Exception {
-//
-//        Thread.sleep(5000);
-//
-//        if (user.getId() !=null){
-//            System.out.println("更新用户");
-//            userService.updateUser(user);
-//        }else {
-//            if (tokenSet.contains(token)){
-//                System.out.println("添加用户");
-//                userService.insertUser(user,token);
-//            }else {
-//                throw new Exception("token 不存在");
-//            }
-//        }
-//        return "redirect:/user/userList";
-//    }
+    @RequestMapping("updateUser")
+    public String updateUser(User user,String token) throws Exception {
+
+        Thread.sleep(5000);
+
+        if (user.getId() !=null){
+            System.out.println("更新用户");
+            userService.updateUser(user);
+        }else {
+            if (tokenSet.contains(token)){
+                System.out.println("添加用户");
+                userService.insertUser(user,token);
+            }else {
+                throw new Exception("token 不存在");
+            }
+        }
+        return "redirect:/user/userList";
+    }
 
     @RequestMapping("register")
     public String register(ModelMap map){
