@@ -1,12 +1,10 @@
-package com.imooc.springcloud;
+package com.demo.springcloud;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-/**
- * Created by 半仙.
- */
+
 @SpringBootApplication
 public class RateLimiterApplication {
 

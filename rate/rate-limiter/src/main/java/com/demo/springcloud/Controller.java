@@ -1,4 +1,4 @@
-package com.imooc.springcloud;
+package com.demo.springcloud;
 
 import com.google.common.util.concurrent.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by 半仙.
- */
+
 @RestController
 @Slf4j
 public class Controller {
@@ -51,8 +49,8 @@ public class Controller {
 
 
     // Nginx专用
-    // 1. 修改host文件 -> www.imooc-training.com = localhost 127.0.0.1
-    //    (127.0.0.1	www.imooc-training.com)
+    // 1. 修改host文件 -> www.limit-training.com = localhost 127.0.0.1
+    //    (127.0.0.1	www.limit-training.com)
     // 2. 修改nginx -> 将步骤1中的域名，添加到路由规则当中
     //    配置文件地址： /usr/local/nginx/conf/nginx.conf
     // 3. 添加配置项：参考resources文件夹下面的nginx.conf
