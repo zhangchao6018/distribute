@@ -1,10 +1,8 @@
-package com.imooc.springcloud.annotation;
+package com.demo.springcloud.annotation;
 
 import java.lang.annotation.*;
 
-/**
- * Created by 半仙.
- */
+
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

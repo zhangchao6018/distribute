@@ -1,4 +1,4 @@
-package com.imooc.springcloud.annotation;
+package com.demo.springcloud.annotation;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -17,9 +17,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-/**
- * Created by 半仙.
- */
+
 @Slf4j
 @Aspect
 @Component
@@ -31,7 +29,7 @@ public class AccessLimiterAspect {
     @Autowired
     private RedisScript<Boolean> rateLimitLua;
 
-    @Pointcut("@annotation(com.imooc.springcloud.annotation.AccessLimiter)")
+    @Pointcut("@annotation(com.demo.springcloud.annotation.AccessLimiter)")
     public void cut() {
         log.info("cut");
     }

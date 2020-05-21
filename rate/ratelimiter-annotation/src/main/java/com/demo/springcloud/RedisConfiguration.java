@@ -1,4 +1,4 @@
-package com.imooc.springcloud;
+package com.demo.springcloud;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 
 /**
- * Created by 半仙.
+ * 声明redisTemplate以及lua脚本类
  */
 @Configuration
 public class RedisConfiguration {
@@ -26,6 +26,7 @@ public class RedisConfiguration {
     public DefaultRedisScript loadRedisScript() {
         DefaultRedisScript redisScript = new DefaultRedisScript();
         redisScript.setLocation(new ClassPathResource("ratelimiter.lua"));
+        //返回值类型,未限流->true,限流->false
         redisScript.setResultType(java.lang.Boolean.class);
         return redisScript;
     }

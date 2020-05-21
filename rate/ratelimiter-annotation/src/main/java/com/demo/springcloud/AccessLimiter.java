@@ -1,4 +1,4 @@
-package com.imooc.springcloud;
+package com.demo.springcloud;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -7,9 +7,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by 半仙.
- */
 @Service
 @Slf4j
 @Deprecated

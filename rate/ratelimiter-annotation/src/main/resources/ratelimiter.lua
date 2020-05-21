@@ -1,16 +1,16 @@
 --
 -- Created by IntelliJ IDEA.
--- User: 半仙
 --
 
--- 获取方法签名特征
+-- 获取方法签名特征(AccessLimiter注解会将当前调用的方法名传入到key当中)
 local methodKey = KEYS[1]
+-- redis日志 打印到redis控制台
 redis.log(redis.LOG_DEBUG, 'key is', methodKey)
 
 -- 调用脚本传入的限流大小
 local limit = tonumber(ARGV[1])
 
--- 获取当前流量大小
+-- 获取当前流量大小->redis获取,默认0
 local count = tonumber(redis.call('get', methodKey) or "0")
 
 -- 是否超出限流阈值
