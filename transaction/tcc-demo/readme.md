@@ -5,6 +5,7 @@
     com.example.tccdemo.TccDemoApplicationTests.testAccount
 
 **二.基于本地消息表的最终一致性方案**
+
 -- 1.本地消息表+定时任务=httpclient
     支付:
     localhost:8080/payment?userId=1&orderId=10010&amount=100
@@ -17,6 +18,7 @@
             3.订单系统(另外一个数据库),接收到请求->将订单更新为已支付->回传success
 
 -- 2. 基于mq的最终一致性方案:
+
     2.1 需要mq环境(这里以mac环境 rocketMq作为实示例)
         cd /Users/zhangchao/develop/rocketMQ/rocketmq-all-4.5.1-bin-release
         1.启动路由:
