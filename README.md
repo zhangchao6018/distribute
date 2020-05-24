@@ -105,17 +105,17 @@ sharding不像mycat可以配置主从表的具体根据哪个字段关联
 
 
 
-#分布式事务
+# 分布式事务
 
 传送门:https://github.com/zhangchao6018/distribute/tree/master/transaction
 
-**一.TCC事务补偿机制**
+###**一.TCC事务补偿机制**
     1.配置多数据源
     2.配置事务管理器
     3.单元测试:
     com.example.tccdemo.TccDemoApplicationTests.testAccount
 
-**二.基于本地消息表的最终一致性方案**
+###**二.基于本地消息表的最终一致性方案**
 
 -- 1.本地消息表+定时任务=httpclient
     支付:
@@ -179,15 +179,15 @@ sharding不像mycat可以配置主从表的具体根据哪个字段关联
     查看是否统一回滚
     
     
-#限流
+# 限流
 传送门:https://github.com/zhangchao6018/distribute/tree/master/rate
 
 
-#1.谷歌开发的guava-轻量级限流方案:
+###1.谷歌开发的guava-轻量级限流方案:
 非阻塞式
 
 阻塞式
-#2.基于nginx的多维度限流
+###2.基于nginx的多维度限流
 @see   src/main/resources/nginx.conf
 
 2.1 根据ip限制
@@ -199,7 +199,7 @@ sharding不像mycat可以配置主从表的具体根据哪个字段关联
     http://www.limit-training.com/access-limit/nginx-conn?secs=10
     
     
-## redis+lua实现非入侵式式限流注解
+### redis+lua实现非入侵式式限流注解
 
 
 
